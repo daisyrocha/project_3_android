@@ -1,6 +1,6 @@
 # Project Title: (Coming soon)
 
-Contributors: 
+### Contributors: 
   * Daisy Rocha-Montanez (https://github.com/daisyrocha) 
   * (insert name)
   * (insert name)
