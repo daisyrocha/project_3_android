@@ -8,10 +8,14 @@
 
 ### Description: 
  (coming soon) 
+ 
+### Tech Stack:
+  * Room
+  * Retrofit2
 
 
 ### API being used: 
-  [Superhero API](https://www.superheroapi.com/api.php/109324175078057/520)
+  [Superhero API](https://www.superheroapi.com)
                 
 
 ### Resources: 
