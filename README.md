@@ -1,4 +1,4 @@
-# Project Title: Superhero Battle
+# Project Title: Hero Brawl
 
 [Website Repo](https://github.com/IGramajoO/project_3_website)
 
