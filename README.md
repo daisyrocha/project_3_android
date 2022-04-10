@@ -1,4 +1,4 @@
-# Project Title: (Coming soon)
+# Project Title: Superhero Battle
 
 ### Contributors: 
   * [Daisy Rocha-Montanez](https://github.com/daisyrocha) 
@@ -11,7 +11,7 @@
 
 
 ### API being used: 
-  (TBA)
+  [Superhero API](https://www.superheroapi.com/api.php/109324175078057/520)
                 
 
 ### Resources: 
