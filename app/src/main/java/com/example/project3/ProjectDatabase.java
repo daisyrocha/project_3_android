@@ -41,17 +41,18 @@ public abstract class ProjectDatabase extends RoomDatabase {
      */
     public void populateInitialData() {
         runInTransaction(() -> {
-//            if(user().count() == 0) {
+            if(user().count() == 0) {
                 user().addUser(
                         new User("administrator", "abc")
                 );
-//            }
+            }
 
-//            if(hero().count() == 0) {
+
+            if(hero().count() == 0) {
                 hero().addHero(
                         new Heroes(1, "Cat", 1)
                 );
-//            }
+            }
         });
     }
 }
