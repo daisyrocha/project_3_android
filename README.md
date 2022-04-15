@@ -14,6 +14,7 @@
 ### Tech Stack:
   * Room
   * Retrofit2
+  * JawsDB - mySQL
 
 
 ### API being used: 
