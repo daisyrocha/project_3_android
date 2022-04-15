@@ -20,6 +20,19 @@
 ### API being used: 
   [Superhero API](https://www.superheroapi.com)
   
+
+### Tentative Endpoints: 
+  * GET /allUsers 
+  * PUT /addTeam?userId=${userId}&teamName={$teamName} (Create new team for a user)
+  * PUT /addToTeam?teamId={$teamId}&characterId=${charId} (Add a character to a team)
+  * GET /getTeams?userId={$userId} (Get teams for a specific user)
+  * GET /getTeam?userId=${userId}&teamId={$teamId} (Get a specific team from a user)
+  * POST /login?username={$username}&password={$password}
+  * POST /newuser?username={$username}&password={$password}
+  * POST /logout?username={$username}
+  * DELETE /deleteAccount?userId={$userId}
+  * PUT /removeCharacter?teamId={$teamId}&characterId=${charId} (Remove Character from a team)
+  
   
  ### Wireframe:
 ![Screen Shot 2022-04-10 at 12 43 10 AM](https://user-images.githubusercontent.com/72002539/162608077-73172162-7ddc-4f48-a05d-a78bb05cdb50.png) 
