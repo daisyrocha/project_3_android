@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        /**
+         * Implemented so that we are allowed to go back to the previous page
+         * navController is the id of our navigation host (nav_host_fragment)
+         */
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         db.populateInitialData();
     }
 
+    // TODO
+    // Which is the Activity.class?
     public static Intent intentFactory(Context context, int userId){
         Intent intent = new Intent(context, Activity.class);
         intent.putExtra(USER_ID_KEY, userId);
