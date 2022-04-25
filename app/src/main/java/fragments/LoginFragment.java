@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.project3.MainActivity;
+import com.example.project3.ProjectDatabase;
 import com.example.project3.R;
 import com.example.project3.User;
 import com.example.project3.UserDao;
@@ -27,6 +28,7 @@ public class LoginFragment extends Fragment {
 
     private UserDao _UserDAO;
 
+
     private String _UserString;
     private String _PasswordString;
 
@@ -34,37 +36,51 @@ public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
 
+
+    /**
+     * We need to create this Override method to be able to create
+     * onclick listeners for the buttons
+     *
+     * LayoutInflater creates a new view/layout object from one of our xml layouts
+     */
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
-    private void LoginDisplay(){
+    private Boolean LoginDisplay() {
+
+        /**
+         * _Username and _Password is the text we get from the user input
+         * in the EditText boxes.
+         *
+         * _Button is a reference to the login button
+         */
         _Username = _Username.findViewById(R.id.username);
         _Password = _Password.findViewById(R.id.password);
 
-        _Button = _Button.findViewById(R.id.loginBtn);
-        _Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _UserString = _Username.getText().toString();
-                _PasswordString = _Password.getText().toString();
-                if(checkForUserDB()){
-                    if(_User.getPassword().equals(_PasswordString)){
-                        Toast.makeText(getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
-                    } else{
-                        Intent intent = MainActivity.intentFactory(getContext(), _User.getUserId());
-                        startActivity(intent);
-                    }
-                }
+        _UserString = (String) _Username.getText().toString();
+        _PasswordString = (String) _Password.getText().toString();
+
+        if (checkForUserDB()) {
+            /**
+             * Here I added the ! in front of _User.getPassword().... because we want to check that
+             * the passwords don't match.
+             * If the passwords don't match, then we would display the
+             * "Invalid Password" toast
+             */
+            if (!_User.getPassword().equals(_PasswordString)) {
+                Toast.makeText(getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                return true;
             }
-        });
+        }
+        return false;
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -73,15 +89,33 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(LoginFragment.this)
                         .navigate(R.id.LoginFragment_to_RegisterFragment);
+
             }
+        });
+
+        /**
+         * this definitely works, but we need to find a way to verify the username and
+         * password entered are in our system.
+         */
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if(LoginDisplay()) {
+                    NavHostFragment.findNavController(LoginFragment.this)
+                            .navigate(R.id.LoginFragment_to_LandingFragment);
+//                }
+            }
+
         });
     }
 
+    /**
+     * If the username is found in the database,
+     */
     private boolean checkForUserDB(){
         _User = _UserDAO.getUserByUsername(_UserString);
         if(_User == null){
             Toast.makeText(getContext(), "No User " + _UserString + " found ", Toast.LENGTH_SHORT).show();
-
             return false;
         }
         return true;

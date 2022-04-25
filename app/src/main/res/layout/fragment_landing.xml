@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="fragments.LandingFragment">
+
+    <TextView
+        android:id="@+id/welcomeUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome, **username**!"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"/>
+
+    <Button
+        android:id="@+id/allTeams"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:text="View Teams" />
+
+    <Button
+        android:id="@+id/heroSearch"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:text="Search Heroes" />
+
+    <Button
+        android:id="@+id/userAccount"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:text="Account View"
+        android:layout_marginBottom="100dp"/>
+
+</LinearLayout>

@@ -8,22 +8,34 @@
     <fragment
         android:id="@+id/LoginFragment"
         android:name="fragments.LoginFragment"
+        android:label="Hero Brawl"
         tools:layout="@layout/fragment_login">
-
         <action
             android:id="@+id/LoginFragment_to_RegisterFragment"
             app:destination="@id/RegisterFragment"/>
+        <action
+            android:id="@+id/LoginFragment_to_LandingFragment"
+            app:destination="@id/LandingFragment" />
 
     </fragment>
 
     <fragment
         android:id="@+id/RegisterFragment"
         android:name="fragments.RegisterFragment"
+        android:label="Create Account"
         tools:layout="@layout/fragment_register">
         <action
-            android:id="@+id/RegisterFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment"
-        />
+            android:id="@+id/action_RegisterFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LandingFragment"
+        android:name="fragments.LandingFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_landing">
+        <action
+            android:id="@+id/action_LandingFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
     </fragment>
 
 </navigation>
