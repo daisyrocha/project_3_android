@@ -8,11 +8,8 @@
         <entry key="..\:/Users/moral/AndroidStudioProjects/project_3_android/app/src/main/res/layout/fragment_login.xml" value="0.2921195652173913" />
         <entry key="..\:/Users/moral/AndroidStudioProjects/project_3_android/app/src/main/res/layout/fragment_register.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/content_main.xml" value="0.10733695652173914" />
-        <entry key="app/src/main/res/layout/fragment_landing.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_landing_page.xml" value="0.2749094202898551" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.10733695652173914" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_landing.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.165" />
       </map>
     </option>
   </component>

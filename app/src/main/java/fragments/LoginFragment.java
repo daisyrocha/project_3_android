@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.room.Room;
 
 import com.example.project3.MainActivity;
 import com.example.project3.ProjectDatabase;
@@ -27,6 +28,7 @@ public class LoginFragment extends Fragment {
     private Button _Button;
 
     private UserDao _UserDAO;
+    ProjectDatabase db;
 
 
     private String _UserString;
@@ -46,10 +48,13 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         binding = FragmentLoginBinding.inflate(inflater, container, false);
+        db = ProjectDatabase.getInstance(this.getActivity());
         return binding.getRoot();
+
     }
 
     private Boolean LoginDisplay() {
+        getActivity();
 
         /**
          * _Username and _Password is the text we get from the user input
@@ -57,11 +62,11 @@ public class LoginFragment extends Fragment {
          *
          * _Button is a reference to the login button
          */
-        _Username = _Username.findViewById(R.id.username);
-        _Password = _Password.findViewById(R.id.password);
+        _Username = getView().findViewById(R.id.username);
+        _Password = getView().findViewById(R.id.password);
 
-        _UserString = (String) _Username.getText().toString();
-        _PasswordString = (String) _Password.getText().toString();
+        _UserString = _Username.getText().toString();
+        _PasswordString = _Password.getText().toString();
 
         if (checkForUserDB()) {
             /**
@@ -100,10 +105,10 @@ public class LoginFragment extends Fragment {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(LoginDisplay()) {
+                if(LoginDisplay()) {
                     NavHostFragment.findNavController(LoginFragment.this)
                             .navigate(R.id.LoginFragment_to_LandingFragment);
-//                }
+                }
             }
 
         });
@@ -113,6 +118,7 @@ public class LoginFragment extends Fragment {
      * If the username is found in the database,
      */
     private boolean checkForUserDB(){
+        getDatabase();
         _User = _UserDAO.getUserByUsername(_UserString);
         if(_User == null){
             Toast.makeText(getContext(), "No User " + _UserString + " found ", Toast.LENGTH_SHORT).show();
@@ -124,5 +130,13 @@ public class LoginFragment extends Fragment {
     public static  Intent intentFactory(Context context){
         Intent intent = new Intent(context, LoginFragment.class);
         return intent;
+    }
+
+    private void getDatabase() {
+        _UserDAO = Room.databaseBuilder(getActivity(), ProjectDatabase.class, "HeroBrawl.db")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build()
+                .getUserDao();
     }
 }
