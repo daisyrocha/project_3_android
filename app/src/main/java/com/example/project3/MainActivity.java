@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
          * If there is, it will return the instance of the database and assign it to db variable
          */
         db = ProjectDatabase.getInstance(this);
-//        db.populateInitialData();
     }
 
     // TODO

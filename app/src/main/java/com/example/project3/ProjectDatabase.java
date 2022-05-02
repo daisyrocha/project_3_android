@@ -11,9 +11,11 @@ import androidx.room.RoomDatabase;
  * entities are held here
  */
 @Database(entities = {User.class, Heroes.class}, version=1, exportSchema = false)
+
 public abstract class ProjectDatabase extends RoomDatabase {
-//    public abstract UserDao user();
-    public abstract HeroesDao hero();
+
+    public abstract UserDao getUserDao();
+    public abstract HeroesDao getHeroesDao();
 
     private static ProjectDatabase sInstance;
 
@@ -35,26 +37,4 @@ public abstract class ProjectDatabase extends RoomDatabase {
         }
         return sInstance;
     }
-
-    /**
-     * Adding a user and hero to our database
-     */
-//    public void populateInitialData() {
-//        runInTransaction(() -> {
-//            if(user().count() == 0) {
-//                user().addUser(
-//                        new User("administrator", "abc")
-//                );
-//            }
-//
-//
-//            if(hero().count() == 0) {
-//                hero().addHero(
-//                        new Heroes(1, "Cat", 1)
-//                );
-//            }
-//        });
-//    }
-
-    public abstract UserDao getUserDao();
 }
