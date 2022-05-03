@@ -116,11 +116,11 @@ public class LoginFragment extends Fragment {
 //                    Bundle bundle = new Bundle();
 //                    bundle.putString("welcomeUsername", "Welcome, " + _UserString);
 //                    intent.putExtras(bundle);
-
+//                    startActivity(intent);
                     NavHostFragment.findNavController(LoginFragment.this)
                             .navigate(R.id.LoginFragment_to_LandingFragment);
 
-                    startActivity(intent);
+
                 }
             }
         });
