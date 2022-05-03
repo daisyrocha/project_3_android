@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -73,6 +74,7 @@ public class LandingFragment extends Fragment {
 
         TextView textview = (TextView) getView().findViewById(R.id.welcomeUser);
         textview.setText("HI!");
+
 
     }
 }

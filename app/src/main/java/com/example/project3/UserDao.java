@@ -25,7 +25,7 @@ public interface UserDao {
     int count();
 
     @Query("SELECT * FROM userTable")
-    List<User> getAll();
+    List<User> getAllUsers();
 
     @Delete
     void delete(User user);
@@ -33,5 +33,7 @@ public interface UserDao {
     @Query("SELECT * FROM userTable WHERE username = :eUsername")
     User getUserByUsername(String eUsername);
 
+    @Query("SELECT * FROM userTable WHERE userId = :uId")
+    User getUserById(int uId);
 
 }

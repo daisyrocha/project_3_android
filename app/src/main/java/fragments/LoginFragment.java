@@ -25,7 +25,6 @@ import com.example.project3.databinding.FragmentLoginBinding;
 public class LoginFragment extends Fragment {
     private EditText _Username;
     private EditText _Password;
-    private Button _Button;
 
     private UserDao _UserDAO;
     ProjectDatabase db;
@@ -46,21 +45,29 @@ public class LoginFragment extends Fragment {
      * LayoutInflater creates a new view/layout object from one of our xml layouts
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
+        /**
+         * Here we get an instance of the database - We get whatever is added to it.
+         */
         db = ProjectDatabase.getInstance(this.getActivity());
         return binding.getRoot();
 
     }
 
     private Boolean LoginDisplay() {
+        /**
+         * Will get us the Activity the fragment is currently associated with
+          */
         getActivity();
 
         /**
          * _Username and _Password is the text we get from the user input
          * in the EditText boxes.
          *
-         * _Button is a reference to the login button
+         * getView() displays the data at the specified position of the dataset,
+         * in this case, we display the data in the username edit text and
+         * the password edit text, we then store it as _Username and _Password.
          */
         _Username = getView().findViewById(R.id.username);
         _Password = getView().findViewById(R.id.password);
@@ -70,10 +77,8 @@ public class LoginFragment extends Fragment {
 
         if (checkForUserDB()) {
             /**
-             * Here I added the ! in front of _User.getPassword().... because we want to check that
-             * the passwords don't match.
-             * If the passwords don't match, then we would display the
-             * "Invalid Password" toast
+             * We checked if the username existed in the db in the checkForUser() function.
+             * If checkForUser returns true, then we compare the passwords to make sure they match
              */
             if (!_User.getPassword().equals(_PasswordString)) {
                 Toast.makeText(getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
@@ -99,23 +104,30 @@ public class LoginFragment extends Fragment {
         });
 
         /**
-         * this definitely works, but we need to find a way to verify the username and
-         * password entered are in our system.
+         * When button is clicked, we will go into the following functions
+         * loginBtn onClickListener -> LoginDisplay -> checkForUserDB then back
+         * checkForUserDB -> LoginDisplay -> loginBtn onClickListener
          */
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(LoginDisplay()) {
+//                    Intent intent = new Intent(getContext(), LandingFragment.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("welcomeUsername", "Welcome, " + _UserString);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
                     NavHostFragment.findNavController(LoginFragment.this)
                             .navigate(R.id.LoginFragment_to_LandingFragment);
+
+
                 }
             }
-
         });
     }
 
     /**
-     * If the username is found in the database,
+     * If the username is found in the database, return true, otherwise, return false.
      */
     private boolean checkForUserDB(){
         getDatabase();
