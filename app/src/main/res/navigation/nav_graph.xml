@@ -36,6 +36,30 @@
         <action
             android:id="@+id/LandingFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_LandingFragment_to_viewTeamsFragment2"
+            app:destination="@id/viewTeamsFragment" />
+        <action
+            android:id="@+id/action_LandingFragment_to_searchHeroesFragment"
+            app:destination="@id/searchHeroesFragment" />
+        <action
+            android:id="@+id/action_LandingFragment_to_accountViewFragment"
+            app:destination="@id/accountViewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/viewTeamsFragment"
+        android:name="fragments.ViewTeamsFragment"
+        android:label="fragment_view_teams"
+        tools:layout="@layout/fragment_view_teams" />
+    <fragment
+        android:id="@+id/searchHeroesFragment"
+        android:name="fragments.SearchHeroesFragment"
+        android:label="fragment_search_heroes"
+        tools:layout="@layout/fragment_search_heroes" />
+    <fragment
+        android:id="@+id/accountViewFragment"
+        android:name="fragments.AccountViewFragment"
+        android:label="fragment_account_view"
+        tools:layout="@layout/fragment_account_view" />
 
 </navigation>
