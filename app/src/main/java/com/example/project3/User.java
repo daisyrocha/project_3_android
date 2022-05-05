@@ -25,11 +25,11 @@ public class User {
         this.password = password;
     }
 
-//    public User(int user_id, String user_name, String pwd) {
-//        this.userId = user_id;
-//        this.username = user_name;
-//        this.password = pwd;
-//    }
+    public User(int user_id, String user_name, String pwd) {
+        this.userId = user_id;
+        this.username = user_name;
+        this.password = pwd;
+    }
 
     public int getUserId() {
         return userId;
