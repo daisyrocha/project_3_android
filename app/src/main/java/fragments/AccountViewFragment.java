@@ -1,27 +1,21 @@
 package fragments;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.project3.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LandingFragment#newInstance} factory method to
+ * Use the {@link AccountViewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LandingFragment extends Fragment {
+public class AccountViewFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +26,7 @@ public class LandingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LandingFragment() {
+    public AccountViewFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +36,11 @@ public class LandingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment landing_page.
+     * @return A new instance of fragment AccountViewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LandingFragment newInstance(String param1, String param2) {
-        LandingFragment fragment = new LandingFragment();
+    public static AccountViewFragment newInstance(String param1, String param2) {
+        AccountViewFragment fragment = new AccountViewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,23 +61,6 @@ public class LandingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_landing, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        TextView textview = (TextView) getView().findViewById(R.id.welcomeUser);
-        textview.setText("HI!");
-        /**
-         * Here we should send data from the login fragment to this landing fragment
-         * to be able to display the username instead of the "HI!"
-         *
-         * I tried using an Intent, but for some reason, it won't pick up the data that
-         * was sent
-         */
-
-
+        return inflater.inflate(R.layout.fragment_account_view, container, false);
     }
 }
