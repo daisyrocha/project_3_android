@@ -37,13 +37,13 @@
             android:id="@+id/LandingFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
         <action
-            android:id="@+id/action_LandingFragment_to_viewTeamsFragment2"
+            android:id="@+id/LandingFragment_to_viewTeamsFragment"
             app:destination="@id/viewTeamsFragment" />
         <action
-            android:id="@+id/action_LandingFragment_to_searchHeroesFragment"
+            android:id="@+id/LandingFragment_to_searchHeroesFragment"
             app:destination="@id/searchHeroesFragment" />
         <action
-            android:id="@+id/action_LandingFragment_to_accountViewFragment"
+            android:id="@+id/LandingFragment_to_accountViewFragment"
             app:destination="@id/accountViewFragment" />
     </fragment>
     <fragment
