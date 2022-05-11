@@ -2,6 +2,7 @@ package fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ import com.example.project3.databinding.FragmentLoginBinding;
 public class LoginFragment extends Fragment {
     private EditText _Username;
     private EditText _Password;
+    SharedPreferences sp;   // Part of Shared preference implementation
+    int id; // Shared Preference to send user ID to other page
 
     private UserDao _UserDAO;
     ProjectDatabase db;
@@ -75,6 +78,7 @@ public class LoginFragment extends Fragment {
         _UserString = _Username.getText().toString();
         _PasswordString = _Password.getText().toString();
 
+
         if (checkForUserDB()) {
             /**
              * We checked if the username existed in the db in the checkForUser() function.
@@ -112,11 +116,17 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(LoginDisplay()) {
-//                    Intent intent = new Intent(getContext(), LandingFragment.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("welcomeUsername", "Welcome, " + _UserString);
-//                    intent.putExtras(bundle);
-//                    startActivity(intent);
+
+                    /**
+                     * 1 of 2 Shared Preference Implementation. From here, we go to
+                     * LandingFragment
+                     */
+                    sp = getActivity().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);   // Context.MODE_PRIVATE == 0 (either works)
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("username", _UserString);
+                    editor.putInt("id", whichUser(_UserString));
+                    editor.commit();
+
                     NavHostFragment.findNavController(LoginFragment.this)
                             .navigate(R.id.LoginFragment_to_LandingFragment);
 
@@ -150,5 +160,9 @@ public class LoginFragment extends Fragment {
                 .fallbackToDestructiveMigration()
                 .build()
                 .getUserDao();
+    }
+
+    private int whichUser(String username) {
+        return _UserDAO.getUserId(_UserString);
     }
 }
