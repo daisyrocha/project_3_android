@@ -13,6 +13,7 @@ public interface UserApi {
     @FormUrlEncoded
 
     @GET("/allUsers")
+    // not sure about this..
     Call<List<User>> getAllUsers();
 
     @POST("/addUser")
