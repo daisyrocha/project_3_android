@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.room.Room;
 
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project3.ProjectDatabase;
 import com.example.project3.R;
@@ -26,13 +29,20 @@ public class LandingFragment extends Fragment {
     ProjectDatabase db;
     private UserDao _UserDAO;
     private User _User;
+    int id; // used to keep track of the user that is logged in
 
     private FragmentLandingBinding binding;
+    SharedPreferences sp;
+
+    public LandingFragment(){
+        //empty public constructor
+    }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sp = getContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
 
     }
 
@@ -56,17 +66,17 @@ public class LandingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         TextView textview = (TextView) getView().findViewById(R.id.welcomeUser);
-        textview.setText("HI!");
-        /**
-         * Here we should send data from the login fragment to this landing fragment
-         * to be able to display the username instead of the "HI!"
-         *
-         * I tried using an Intent, but for some reason, it won't pick up the data that
-         * was sent
-         */
+        // was here
 
+        /**
+         * 2 of 2 Shared Preference Implementation. We are able to obtain the username and have it displayed
+         * as a welcome message to the user.
+         */
+        String username = sp.getString("username", "");
+        id = sp.getInt("id", 0);
+        textview.setText("Welcome, " + username + "!");
+        Toast.makeText(getContext(), "The ID is: " + id, Toast.LENGTH_SHORT).show();
 
         /**
          * OnClickListener that will take user to a page where they can view
@@ -107,4 +117,5 @@ public class LandingFragment extends Fragment {
         });
 
     }
+
 }
