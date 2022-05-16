@@ -1,65 +1,121 @@
 package com.example.project3;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "heroesTable")
+@Entity(tableName = "heroes", foreignKeys = @ForeignKey(entity = Team.class, parentColumns = "team_id", childColumns = "team_id", onDelete = CASCADE, onUpdate = CASCADE))
 public class Heroes {
 
     @PrimaryKey(autoGenerate = true)
-    private int heroId;
+    private int hero_id;
 
-    @ColumnInfo(name = "userId")
-    private int userId;
+    @ColumnInfo(name = "combat")
+    private int combat;
 
-    @ColumnInfo(name = "heroName")
-    private String heroName;
+    @ColumnInfo(name = "durability")
+    private int durability;
 
-    @ColumnInfo(name = "count")
-    private int count;
+    @ColumnInfo(name = "intelligence")
+    private int intelligence;
+
+    @ColumnInfo(name = "power")
+    private int power;
+
+    @ColumnInfo(name = "speed")
+    private int speed;
+
+    @ColumnInfo(name = "strength")
+    private int strength;
+
+    @ColumnInfo(name = "team_id")
+    private int team_id;
 
     /**
      * Heroes Constructor
      */
-    public Heroes(int userId, String heroName, int count) {
-        this.userId = userId;
-        this.heroName = heroName;
-        this.count = count;
+    public Heroes() {
+        // empty
+    }
+
+    public Heroes(int heroId, int combat, int durability, int intelligence, int power, int speed, int strength, int teamId) {
+        this.hero_id = heroId;
+        this.combat = combat;
+        this.durability = durability;
+        this.intelligence = intelligence;
+        this.power = power;
+        this.speed = speed;
+        this.strength = strength;
+        this.team_id = teamId;
     }
 
     /**
-     * Getters and Setters for the Heroes entity
+     * Getters and Setters
      */
-    public int getHeroId() {
-        return heroId;
+    public int getHero_id() {
+        return hero_id;
     }
 
-    public void setHeroId(int heroId) {
-        this.heroId = heroId;
+    public void setHero_id(int hero_id) {
+        this.hero_id = hero_id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getCombat() {
+        return combat;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setCombat(int combat) {
+        this.combat = combat;
     }
 
-    public String getHeroName() {
-        return heroName;
+    public int getDurability() {
+        return durability;
     }
 
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
+    public void setDurability(int durability) {
+        this.durability = durability;
     }
 
-    public int getCount() {
-        return count;
+    public int getIntelligence() {
+        return intelligence;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getTeam_id() {
+        return team_id;
+    }
+
+    public void setTeam_id(int team_id) {
+        this.team_id = team_id;
     }
 }

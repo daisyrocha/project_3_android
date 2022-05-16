@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
  * This is the class that holds the database
  * entities are held here
  */
-@Database(entities = {User.class, Heroes.class}, version=1, exportSchema = false)
+@Database(entities = {User.class, Heroes.class, Team.class}, version=1, exportSchema = false)
 
 public abstract class ProjectDatabase extends RoomDatabase {
 

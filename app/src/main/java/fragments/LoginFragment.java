@@ -27,7 +27,7 @@ public class LoginFragment extends Fragment {
     private EditText _Username;
     private EditText _Password;
     SharedPreferences sp;   // Part of Shared preference implementation
-    int id; // Shared Preference to send user ID to other page
+    int user_id; // Shared Preference to send user ID to other page
 
     private UserDao _UserDAO;
     ProjectDatabase db;
@@ -124,7 +124,7 @@ public class LoginFragment extends Fragment {
                     sp = getActivity().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);   // Context.MODE_PRIVATE == 0 (either works)
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString("username", _UserString);
-                    editor.putInt("id", whichUser(_UserString));
+                    editor.putInt("user_id", whichUser(_UserString));
                     editor.commit();
 
                     NavHostFragment.findNavController(LoginFragment.this)

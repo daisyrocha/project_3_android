@@ -21,22 +21,22 @@ public interface UserDao {
     void addUser(User user);
 
     // SQL query
-    @Query("SELECT COUNT(*) FROM userTable")
+    @Query("SELECT COUNT(*) FROM user")
     int count();
 
-    @Query("SELECT * FROM userTable")
+    @Query("SELECT * FROM user")
     List<User> getAllUsers();
 
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM userTable WHERE username = :eUsername")
+    @Query("SELECT * FROM user WHERE username = :eUsername")
     User getUserByUsername(String eUsername);
 
-    @Query("SELECT * FROM userTable WHERE userId = :uId")
+    @Query("SELECT * FROM user WHERE user_id = :uId")
     User getUserById(int uId);
 
-    @Query("SELECT userId FROM userTable WHERE username = :eUsername")
+    @Query("SELECT user_id FROM user WHERE username = :eUsername")
     int getUserId(String eUsername);
 
 }

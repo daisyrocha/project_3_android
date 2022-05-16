@@ -5,14 +5,14 @@ import java.util.List;
 /**
  * Model class according to data from API.
  */
-public class UsersJson<T> {
-    List<T> userData;
+public class UsersJson<User> {
+    List<User> userData;
 
-    public List<T> getUserData() {
+    public List<User> getUserData() {
         return userData;
     }
 
-    public void setUserData(List<T> userData) {
+    public void setUserData(List<User> userData) {
         this.userData = userData;
     }
 
@@ -23,7 +23,9 @@ public class UsersJson<T> {
     public class userData {
         String username;
         String password;
-        int id;
+        List<Team> teamList;
+        int user_id;
+
 
         public String getUsername() {
             return username;
@@ -41,12 +43,12 @@ public class UsersJson<T> {
             this.password = password;
         }
 
-        public int getId() {
-            return id;
+        public int getUserId() {
+            return user_id;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setUserId(int user_id) {
+            this.user_id = user_id;
         }
     }
 }
