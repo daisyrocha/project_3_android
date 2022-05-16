@@ -120,20 +120,20 @@ public class LandingFragment extends Fragment {
         binding.userAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserApi userApi = RetrofitUser.getUserRetrofitInstance().create(UserApi.class);
-                Call<List<User>> call = userApi.getAllUsers();
-
-                call.enqueue(new Callback<List<User>>() {
-                    @Override
-                    public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                        response.
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<User>> call, Throwable t) {
-
-                    }
-                });
+//                UserApi userApi = RetrofitUser.getUserRetrofitInstance().create(UserApi.class);
+//                Call<List<User>> call = userApi.getAllUsers();
+//
+//                call.enqueue(new Callback<List<User>>() {
+//                    @Override
+//                    public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+//                        response.
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<User>> call, Throwable t) {
+//
+//                    }
+//                });
                 NavHostFragment.findNavController(LandingFragment.this)
                         .navigate(R.id.LandingFragment_to_accountViewFragment);
             }
