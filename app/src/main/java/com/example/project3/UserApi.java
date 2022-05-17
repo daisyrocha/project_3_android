@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface UserApi {
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
 
     @GET("/allUsers")
     // not sure about this..

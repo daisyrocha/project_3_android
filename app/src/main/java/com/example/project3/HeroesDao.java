@@ -20,15 +20,15 @@ public interface HeroesDao {
     @Insert
     void addHero(Heroes hero);
 
-    @Query("SELECT COUNT(*) FROM heroesTable")
+    @Query("SELECT COUNT(*) FROM heroes")
     int count();
 
-    @Query("SELECT * FROM heroesTable")
+    @Query("SELECT * FROM heroes")
     List<Heroes> getAll();
 
     @Delete
     void delete(Heroes hero);
 
-    @Query("SELECT * FROM heroesTable WHERE heroName = :eHeroName")
-    User getUserByUsername(String eHeroName);
+//    @Query("SELECT * FROM heroesTable WHERE heroName = :eHeroName")
+//    User getUserByUsername(String eHeroName);
 }

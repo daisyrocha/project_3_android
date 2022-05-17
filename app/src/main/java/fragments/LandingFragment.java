@@ -19,9 +19,18 @@ import android.widget.Toast;
 
 import com.example.project3.ProjectDatabase;
 import com.example.project3.R;
+import com.example.project3.RetrofitUser;
 import com.example.project3.User;
+import com.example.project3.UserApi;
 import com.example.project3.UserDao;
+import com.example.project3.UsersJson;
 import com.example.project3.databinding.FragmentLandingBinding;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LandingFragment extends Fragment {
@@ -29,7 +38,7 @@ public class LandingFragment extends Fragment {
     ProjectDatabase db;
     private UserDao _UserDAO;
     private User _User;
-    int id; // used to keep track of the user that is logged in
+    int user_id; // used to keep track of the user that is logged in
 
     private FragmentLandingBinding binding;
     SharedPreferences sp;
@@ -74,9 +83,9 @@ public class LandingFragment extends Fragment {
          * as a welcome message to the user.
          */
         String username = sp.getString("username", "");
-        id = sp.getInt("id", 0);
+        user_id = sp.getInt("user_id", 0);
         textview.setText("Welcome, " + username + "!");
-        Toast.makeText(getContext(), "The ID is: " + id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "The ID is: " + user_id, Toast.LENGTH_SHORT).show();
 
         /**
          * OnClickListener that will take user to a page where they can view
@@ -111,6 +120,20 @@ public class LandingFragment extends Fragment {
         binding.userAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                UserApi userApi = RetrofitUser.getUserRetrofitInstance().create(UserApi.class);
+//                Call<List<User>> call = userApi.getAllUsers();
+//
+//                call.enqueue(new Callback<List<User>>() {
+//                    @Override
+//                    public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+//                        response.
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<User>> call, Throwable t) {
+//
+//                    }
+//                });
                 NavHostFragment.findNavController(LandingFragment.this)
                         .navigate(R.id.LandingFragment_to_accountViewFragment);
             }
